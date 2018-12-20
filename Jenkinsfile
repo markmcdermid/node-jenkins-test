@@ -1,10 +1,10 @@
 #!groovy
 
-def gitlabGroup = "fpr";
-def projectName = "fpr-ui-state";
-
 node {
-    tools {nodejs “node”}
+    env.NODEJS_HOME = "${tool 'Node 8.9.4'}"
+    // on linux / mac
+    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
+    sh 'npm --version'
 
     stage('Test') {
         env.NODEJS_HOME = "${tool node7}"
