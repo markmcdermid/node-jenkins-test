@@ -1,12 +1,10 @@
 #!groovy
 
-pipeline {
-    agent { docker { image 'node:6.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'npm --version'
-            }
-        }
+def gitlabGroup = "fpr";
+def projectName = "fpr-ui-state";
+
+node {
+    stage('Test') {
+        sh './jenkins/scripts/test.sh'
     }
 }
